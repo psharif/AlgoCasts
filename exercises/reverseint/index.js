@@ -8,6 +8,16 @@
 //   reverseInt(-15) === -51
 //   reverseInt(-90) === -9
 
-function reverseInt(n) {}
+function reverseInt(n) {
+  //Turns number into a string
+  let str = n + '';
+  //Split the string into an array.
+  let arr = str.split("");
+  //Reverse the array. Joining it back into a s
+  return parseInt(arr.reverse().join("")) * Math.sign(n);
+}
 
-module.exports = reverseInt;
+console.log(reverseInt(51));
+console.log(reverseInt(500));
+
+//module.exports = reverseInt;
