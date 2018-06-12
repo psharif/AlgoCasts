@@ -108,6 +108,48 @@ class LinkedList{
       this.head = new Node(data);
     }
   }
+  getAt(index){
+    /// Sets a reference to Head.
+    let node = this.head;
+    /// Sets a count to check against the desired index.
+    let count = 0;
+    /// While there is a node remaining to check in the list.
+    while( node ){
+      /// If you have reached the desired index return the node.
+      if( count == index){
+        return node;
+      }
+      /// otherwise increment count and go to the next node.
+      count++;
+      node = node.next;
+    }
+    /// Return null if it the desired index is not in the list.
+    /// Or there aren't any nodes in the list.
+    return null;
+  }
+  removeAt( index ){
+    /// If the linkedList is empty, don't go any further.
+    if( !this.head ){
+      return;
+    }
+    /// If the desired index to be removed is the first node.
+    if( index === 0 ){
+      /// Set the head to the second Node. 
+      this.head = this.head.next;
+      return;
+    }
+    ///Get the element before the desired index.
+    let previous = this.getAt(index - 1);
+    /// If getAt() does not return a node
+    /// or if the next node after previous is null,
+    /// don't go any further. We can't remove the desired index.
+    if( !previous || !previous.next ){
+        return;
+    }
+    /// Otherwise set the next reference of the previous node to the.
+    /// Node after the one being removed.
+    previous.next = previous.next.next;
+  }
 }
 
 
